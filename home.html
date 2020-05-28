@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>ZEweb</title>
+<script>
+function tell()
+{
+alert("This website is placed at a PC.To provide security to such sites from cyber attack your sign in is required.");
+}
+function validation()
+{
+var result=true;
+var e=document.getElementById("em").value;
+var atindex=e.indexOf('@');
+var dotindex=e.indexOf('.');
+if(atindex<1||e.length-dotindex!=4||dotindex-atindex!=6)
+{
+alert("Your email address is invalid ...");
+result=false;
+}
+return(result);
+}
+</script>
+<style>
+#dw
+{
+height:200px;
+width:400px;
+background-color:;
+
+}
+#df
+{
+position:fixed;
+left:25%;
+top:22%;
+background-color:rgb(10,10,10);
+border:solid 1px rgb(20,50,66);
+height:35%;
+width:48%;
+}
+form
+{
+position:fixed;
+left:30%;
+top:30%;
+}
+.i
+{
+color:white;
+border-style:solid;
+border-color:gray;
+border-width:2px;
+background-color:rgb(10,10,10);
+padding-left:40%;
+height:50px;
+width:500px;
+}
+#s
+{
+color:white;
+width:80px;
+background-color:rgb(10,10,10);
+text-align:center;
+border-style:solid;
+border-color:gray;
+border-width:2px;
+}
+h1
+{
+color:blue;
+font-size:40px;
+}
+#z
+{
+color:red;
+font-size:50px;
+text-shadow:2px 3px 2px white;
+}
+h3
+{
+font-style:italic;
+color:white;
+}
+</style>
+</head>
+<body style="background-color:rgb(10,10,10);" onload="tell()">
+<div id="dw"><h1>WELCOME TO <span id="z">ZEweb</span></h1></div>
+<div id="df">
+<form action="insert_in_to.php"method="POST" onsubmit="return validation()">
+<input class="i" type="text" placeholder="username" name="username"required><br>
+<br>
+<input id="em"class="i" type="text" placeholder="email address" name="email_address"required><br>
+<input class="i"type="password" placeholder="password" name="password"required><br>
+<input id="s"type="submit" value="Sign in">
+</form>
+</div>
+
+</body>
+</html>
