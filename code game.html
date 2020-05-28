@@ -1,0 +1,273 @@
+<script>
+window.onload=function()
+{
+window.addEventListener('mousemove',function(e){da=da+34;map();con=true;});
+window.addEventListener('click',function(e)
+{
+X=-(window.innerWidth-16)/2+e.x;
+Y=+(window.innerHeight-16)/2-e.y;
+calculate_minimum_distance();
+circle(x1[point[1]]+(window.innerWidth-16)/2,-y1[point[1]]+(window.innerHeight-16)/2,10,"","blue");
+circle(x2[point[2]]+(window.innerWidth-16)/2,-y2[point[2]]+(window.innerHeight-16)/2,10,"","blue");
+circle(x3[point[3]]+(window.innerWidth-16)/2,-y3[point[3]]+(window.innerHeight-16)/2,10,"","blue");
+circle(x4[point[4]]+(window.innerWidth-16)/2,-y4[point[4]]+(window.innerHeight-16)/2,10,"","blue");
+}
+);
+    time=50;
+	distance=0;
+	X=0;Y=0;
+	con=true;
+	angle=0;
+	da=70;
+	point=[0,1,2,3,4,5];
+	x1=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y1=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x2=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y2=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x3=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y3=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x4=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y4=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x5=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y5=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x6=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y6=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x7=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y7=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x8=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y8=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x9=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y9=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x10=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y10=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x11=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y11=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x12=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y12=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x13=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y13=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	x14=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],y14=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+	number_of_circles=4;
+	ne=[0,2,3,4,5,5,6,7,8,9,10,11,12,13,14];
+	r=[10,80,150,220,290,160,190,220,250,280,310,340,370,400,430,460,490,520,550,580,610,640];
+	col=["rgb(20,200,20)","rgb(20,100,200)","rgb(150,190,255)","rgb(90,200,100)","rgb(200,120,140)","rgb(200,10,0)","rgb(10,2550,250)","rgb(100,10,255)","rgb(90,90,65)"];
+	canvas_width=window.innerWidth-16;
+	canvas_height=window.innerHeight-16;
+	canvas=document.getElementById("canvas");
+	c=canvas.getContext("2d");
+	c.canvas.width=window.innerWidth-16;
+	c.canvas.height=window.innerHeight-16;
+	canvas.style.backgroundColor="black";
+	canvas.style.margin="0px";
+	l=[0,1,2,3,4,5,6,7,8,9,10];
+	d=[0,1,2,3,4,5,6,7,8,9,10];
+	map();
+	}
+function asin(fa)
+{
+return(57.29577951*Math.asin(fa));
+}
+function acos(fa)
+{
+return(57.29577951*Math.acos(fa));
+}
+function atan(fa)
+{
+return(57.29577951*Math.atan(fa));
+}
+function calculate_minimum_distance()
+{
+for(l[1]=1;l[1]<=ne[1];l[1]++)
+{
+d[1]=angle_of(x1[l[1]],y1[l[1]]);
+for(l[2]=1;l[2]<=ne[2];l[2]++)
+{
+d[2]=d[1]+min_distance(x1[l[1]],y1[l[1]],x2[l[2]],y2[l[2]],r[l[2]]);
+for(l[3]=1;l[3]<=ne[3];l[3]++)
+{
+d[3]=d[2]+min_distance(x2[l[2]],y2[l[2]],x3[l[3]],y3[l[3]],r[l[3]]);
+for(l[4]=1;l[4]<=ne[4];l[4]++)
+{
+d[4]=d[3]+min_distance(x3[l[3]],y3[l[3]],x4[l[4]],y4[l[4]],r[l[4]]);
+d[5]=d[4]+min_distance(x4[l[4]],y4[l[4]],X,Y,r[l[4]]);
+if(con)
+{
+con=false;
+distance=d[5];
+for(tx=1;tx<=4;tx++)
+{
+point[tx]=l[tx];
+}
+}
+if(d[5]<distance)
+{
+distance=d[5];
+for(tx=1;tx<=4;tx++)
+{
+point[tx]=l[tx];
+}
+}
+}
+}
+}
+}
+}
+function angle_of(x,y)
+{
+var an=0;
+var q=quardant_of(x,y);
+an=atan(y/x);
+if(an<0)
+an=-an;
+if(x==0&&y>0)
+an=90;
+if(x==0&&y<0)
+an=270;
+if(y==0&&x>0)
+an=0;
+if(y==0&&x<0)
+an=180;
+switch (q)
+{
+case 1:
+break;
+case 2:
+an=180-an;
+break;
+case 3:
+an=an+180;
+break;
+case 4:
+an=360-an;
+break;
+}
+return(an);
+}
+function quardant_of(x,y)
+{
+var q=0;
+if(x>0&&y>0)
+q=1;
+if(x<0&&y>0)
+q=2;
+if(x<0&&y<0)
+q=3;
+if(x>0&&y<0)
+q=4;
+return(q);
+}
+function min_distance(fx1,fy1,fx2,fy2,fr)
+{
+var angle2=angle_of(fx2,fy2);
+var angle1=angle_of(fx1,fy1);
+var distance=angle2-angle1;
+if(distance<0)
+distance=-distance;
+if(distance<180)
+{
+distance=fr*0.0175*distance;
+return(distance);
+}
+else
+{
+distance=360-distance;
+distance=fr*0.0175*distance;
+return(distance);
+}
+}
+function cos(a)
+{
+var angle=Math.cos(a*0.01745329252);
+return(angle);
+}
+function sin(a)
+{
+var angle=Math.sin(a*0.01745329252);
+return(angle);
+}
+function line(x1,y1,x2,y2,width=1,linecolor="red")
+{
+    c.beginPath();
+	c.strokeStyle=linecolor;
+	c.lineWidth=width;
+	c.moveTo(x1,y1);
+	c.lineTo(x2,y2);
+	c.stroke();
+}
+function rectangle(x1,y1,x2,y2,boundrycolor="red",width=1,fillingcolor="black")
+{
+    c.beginPath();
+	c.lineWidth=width;
+	c.strokeStyle=boundrycolor;
+	c.strokeRect(x1,y1,x2,y2);
+	c.fillStyle=fillingcolor;
+	c.fillRect(x1,y1,x2,y2);
+	c.lineWidth=width;
+	c.strokeStyle=boundrycolor;
+	c.strokeRect(x1,y1,x2,y2);
+}
+function circle(x,y,r,boundrycolor="red",fillingcolor="black")
+{
+    c.beginPath();
+	c.fillStyle=fillingcolor;
+	c.beginPath();
+	c.arc(x,y,r,0,Math.PI*2,false);
+	c.fill();
+	c.strokeStyle=boundrycolor;
+	c.lineWidth=1;
+	c.moveTo(x,y);
+	c.lineTo(x,y);
+	c.stroke();
+}
+function map()
+{
+rectangle(0,0,(window.innerWidth-16),(window.innerHeight-16),"black",1,"black");
+for(i=number_of_circles;i>=1;i--)
+{
+circle((window.innerWidth-16)/2,(window.innerHeight-16)/2,r[i]);
+for(k=1;k<=ne[i];k++)
+{
+var x=r[i]*cos(angle)+(window.innerWidth-16)/2;
+var y=r[i]*sin(angle)+(window.innerHeight-16)/2;
+circle(x,y,10,"black","black");
+x=x-(window.innerWidth-16)/2;
+y=-y+(window.innerHeight-16)/2;
+angle=angle+da;
+switch (i)
+{
+case 14:
+x14[k]=x;y14[k]=y;
+break;
+case 13:
+x13[k]=x;y13[k]=y;
+break;
+case 12:
+x12[k]=x;y12[k]=y;
+break;
+case 11:
+x11[k]=x;y11[k]=y;
+break;
+case 10:
+x10[k]=x;y10[k]=y;
+break;
+case 8:
+x8[k]=x;y8[k]=y;
+break;
+case 7:
+x7[k]=x;y7[k]=y;
+break;
+case 6:
+x6[k]=x;y6[k]=y;
+break;
+case 5:
+x5[k]=x;y5[k]=y;
+break;
+case 4:
+x4[k]=x;y4[k]=y;
+break;
+case 3:
+x3[k]=x;y3[k]=y;
+break;
+case 2:
+x2[k]=x;y2[k]=y;
+break;
+case 1:
+x1[k]=x;y1[k]=y;
+break;
+}
+}
+}
+}
+</script>
+<html>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>
